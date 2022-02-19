@@ -1,14 +1,10 @@
 .App {
   text-align: center;
-  background-color: antiquewhite;
+  background-color: #d9afd9;
+  background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+
   min-height: 55rem;
   height: fit-content;
-}
-.App-bar {
-  margin-left: 1rem;
-}
-.buttons {
-  display: flex;
 }
 p {
   margin-top: 10%;

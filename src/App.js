@@ -13,6 +13,10 @@ import { SignUp } from "./routes/signup";
 import { Forgot } from "./routes/forgotPassword";
 import { Reset } from "./routes/resetPassord";
 
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+
 function App() {
   const history = useHistory();
   const token = localStorage.getItem("token");
@@ -28,27 +32,39 @@ function App() {
   }
   return (
     <div className="App">
-      <div className="App-bar">
-        <div className="buttons">
-          <Button onClick={() => history.push("/")}>Home</Button>
-          <Button onClick={() => history.push("/protected")}>
-            Protected Page
-          </Button>
-          <Button onClick={() => history.push("/unprotected")}>
-            Unprotected Page
-          </Button>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static" color="transparent">
+          <Toolbar>
+            <Button color="inherit" onClick={() => history.push("/")}>
+              Home
+            </Button>
+            <Button color="inherit" onClick={() => history.push("/protected")}>
+              Protected Page
+            </Button>
+            <Button
+              color="inherit"
+              onClick={() => history.push("/unprotected")}
+            >
+              Unprotected Page
+            </Button>
 
-          {login === true ? (
-            <Button sx={{ ml: "auto" }} onClick={Logout}>
-              Logout
-            </Button>
-          ) : (
-            <Button sx={{ ml: "auto" }} onClick={() => history.push("/login")}>
-              Login
-            </Button>
-          )}
-        </div>
-      </div>
+            {login === true ? (
+              <Button color="inherit" sx={{ ml: "auto" }} onClick={Logout}>
+                Logout
+              </Button>
+            ) : (
+              <Button
+                color="inherit"
+                sx={{ ml: "auto" }}
+                onClick={() => history.push("/login")}
+              >
+                Login
+              </Button>
+            )}
+          </Toolbar>
+        </AppBar>
+      </Box>
+
       <Switch>
         <Route exact path="/" component={Home} />
         <ProtectedRoute path="/protected" Proute={Protected} />
